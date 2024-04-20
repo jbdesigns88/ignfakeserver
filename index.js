@@ -86,6 +86,7 @@ const structureResponse = (outputData) => {
 
 
 
+
 app.post(`/${partial}/login`, async (req, res) => {
   
   const {email} = req.body.data
@@ -142,7 +143,7 @@ app.post(`/${partial}/users`, upload.single('image'), async (req, res) => {
 
     const image = req.file ? req.file.filename : undefined;
     const created_id = createUniqueId((Math.random() * 1E9) + fullname)
-    const newUser = { id:created_id, fullname ,email,username, role,created_at:Date(Date.now()) };
+    const newUser = { id:created_id, fullname ,email,username, bio:"", image:"", role,created_at:Date(Date.now()) };
 
 
     
