@@ -118,7 +118,7 @@ app.put(`/${partial}/users/:user_id`, upload.single('image') ,async (req,res) =>
 
   const db = await readDb();
   const user_id = req.params.user_id
-  const dataToUpdate = req.body;
+  const dataToUpdate = req.body.data;
 
   const index = db.users.findIndex(user => user.id === user_id);
   let found_user = db.users[index]
