@@ -12,15 +12,32 @@ const cors = require('cors')
 const partial = `api/test`
 const path = require('path');
 const { readFileSync } = require('fs');
-const options = {
-  key: readFileSync(path.resolve("certs/localhost+3-key.pem")),
-  cert: readFileSync(path.resolve("certs/localhost+3.pem"))
+
+
+const checkCerts = () => {
+  const read = fs.readdirSync(path.resolve("certs/"))
+  let key = read.find(file => file.includes("key.pem"))
+  let cert = read.find(file => !(file.includes("key.pem")))
+  
+  return {key,cert}
+
 }
 
+
+ let ssl = checkCerts()
+
+ const options = {
+  key: readFileSync(path.resolve(`certs/${ssl.key}`)),
+  cert:readFileSync(path.resolve(`certs/${ssl.cert}`)),
+}
+
+
+
 const server = https.createServer(options,app)
+
 // app.use(cors('https://localhost:3000',{'origin': true,optionsSuccessStatus:200}))
 
-const acceptedOrigins = ["https://localhost:3000","https://127.0.0.1:3000","https://192.168.1.109:3000"]
+const acceptedOrigins = ["https://localhost:3000","https://127.0.0.1:3000","https://192.168.1.109:3000","https://192.168.1.234:3000"]
 // app.use((req,res,next) => {
 //   console.log(`A middleware component ${req.headers.origin} | referer: ${req.headers.referer}`)
 //   let origin = acceptedOrigins.includes(req.headers.origin) ? req.headers.origin : ""
@@ -30,7 +47,7 @@ const acceptedOrigins = ["https://localhost:3000","https://127.0.0.1:3000","http
 //   next();
 // })
 
-app.use(cors())
+app.use(cors({origin:true}))
 app.use(express.static('uploads'))
 app.use(bodyParser.json());
 
@@ -124,6 +141,11 @@ app.put(`/${partial}/users/:user_id`, upload.single('image') ,async (req,res) =>
   let found_user = db.users[index]
   const image = req.file ? req.file.filename : null;
  const updatedData = {...found_user,...dataToUpdate}
+
+ console.log(`
+    data that came in ${JSON.stringify(req.body.data)}
+    updated data to save ${JSON.stringify(updatedData)}
+ `)
  if(image !== null){
   const baseUrl = req.protocol + '://' + req.get('host');
   imageUrl = `${baseUrl}/images/${image}`;
@@ -448,7 +470,8 @@ app.post(`/${partial}/users`, upload.single('image'), async (req, res) => {
 
   app.post(`/${partial}/sessions/:mentor_id/schedule`, async (req,res) => {
       const {nextSession,mentee_id} = req.body.data;
-      let convertNextSession = Date(new Date(nextSession))
+     
+      let convertNextSession = new Date(nextSession)
       const {mentor_id} = req.params
       const db = await readDb()
       const maxSessions = 6
