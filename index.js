@@ -131,6 +131,11 @@ app.post(`/${partial}/logout`, async (req, res) => {
 })
 
 
+app.post(`/${partial}/token-refresh`, async (req, res) => {
+  let access_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTY2OGI4OC0xNjI3LTRmOGQtYTRhNS04ODRmZTlmNjllYTEiLCJqdGkiOiIyMzFiZTAwNGQyMWMxN2NiMWY4ZjY2NTBlYmVjOTdhYzNmM2JiODdjZWY4MzNkNmVkYzU3ZmQzOWRmODJjNDI4YzhkYTMwZGI2MGJmZTBiNyIsImlhdCI6MTY5NzY1NDM4MC4xNjI4NjUsIm5iZiI6MTY5NzY1NDM4MC4xNjI4NjksImV4cCI6MTcyOTI3Njc4MC4xMDkzNzYsInN1YiI6IjlhNjY4ZTllLTgwOTYtNDllNy1hNzVhLTEyMDU0NGQwZWIyMiIsInNjb3BlcyI6W119.GyfW0jjJx6kQb3hsChyv_G0pcv2K4DxosZ5pTvzNHjlA1_j8Xr5yN8A0FX8yPqFHTI9HvOwwrF98zQfl0jNffiP6AFj74BV4oYPXZMJwzwZNDv7Ra9Jf50-amZnaAl9hyDvVwo7DL62c6LKUTKs43vCxaJ1W-WHFyUwZK2Az6gf7D5aNCXQjwj23gnHFcxflUYjAPJnuVvn43uLd66rsZ6MlcAxsn5_IJ5jd38-aVeLDdVJR_1LG64Q8G_VigKZ927sx5jni7LhgzUxPN-s5HvvxQ7_vJmJU5SUjsdoNE-DOUqzWCfLtCydjlv8L9tzAmLvCKBw6d9dHdMoZymKJl690x1EoipNeYJPNNEdw3R7PKt1vV5AFrcXRr5L4hIwqkHfAUEaqpT5b7F-j30w6VYXzhKY8PJAefCFv--dz6NYVPtPZmIf1uytS8D1yvz8wbXlIFD_to6AhNKLLngjazb9KuHW_gElTJO80ePl5fipp-jrX1shp-4I0VTDJI1GfgIjj7QNIGThCUXVF0RxFvD2_qTysGoEPI75LKzS5ByC7ABBFvouz6pt8Uuk_LqrzNKOmViVfXiUYI5LMaiKUAA0QEKuDFr6rvnqxWQFi_IUW1SPqhcQmtdhz8_naJ5MSLg2G0IIb6rAVRYhUKxK5vpU9lgxo701a2P5Jxfjz2zY"
+  return res.send({data:{access_token}})
+})
+
 app.put(`/${partial}/users/:user_id`, upload.single('image') ,async (req,res) => {
 
   const db = await readDb();
@@ -536,15 +541,34 @@ app.post(`/${partial}/users`, upload.single('image'), async (req, res) => {
        await writeDb(db)
        res.send({data:{updated:updatedArticle}})
     })
+    
+    app.get(`/${partial}/articles/featured`, async (req,res) => {
+      // res.setHeader("content-type",'application/json')
+      console.log(`only featured articles`)
+       const db = await readDb()
+       const articles = db.articles
+       const found_article = articles.filter(article => article.featured === true)
+       res.status(200).json({data:found_article}) 
+    })
 
-  app.get(`/${partial}/articles/:article_id`, async (req,res) => {
-    res.setHeader("content-type",'application/json')
+    app.get(`/${partial}/articles/:article_id`, async (req,res) => {
+    // res.setHeader("content-type",'application/json')
      const db = await readDb()
      const articles = db.articles
-     const found_article = articles.find(user => user.id === req.params.article_id)
-     res.send({data:{user:found_article}})
+     const found_article = articles.find(article => article.id === req.params.article_id)
+     res.send({data:found_article})
   })
 
+
+
+
+  app.get(`/${partial}/article `, async (req,res) => {
+    res.setHeader("content-type",'application/json')
+     const db = await readDb()
+     const articles = db.articles.slice(0,20)
+    
+     res.send({data:{articles}})
+  })
 
  
   

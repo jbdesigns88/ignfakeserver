@@ -1,0 +1,52 @@
+{
+    "articles": [
+    {
+      "id": "047bdf56cdfd729175edf6dd9b21abf3cf825cac",
+      "title": "The Power of Music: How R&B and Soul Can Transform Your Life",
+      "slug": "the-power-of-music-how-rb-and-soul-can-transform-your-life",
+      "image_url": "https://",
+      "category": "Entertainment News",
+      "author": {"id" : "55b375af99631aa6935535baadca5b9ab0af8570" },
+      "content": "Music has the power to transform lives, heal wounds, and uplift spirits. In a world filled with chaos and uncertainty, the soothing melodies of R&B and soul music offer a sanctuary of peace and tranquility. From the soulful crooning of Aretha Franklin to the smooth harmonies of Boyz II",
+      "featured": true,
+      "created_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)",
+      "updated_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)"
+    },
+    {
+        "id": "047bdf56cdfd729175edf6dd9b21abf3cf825cac",
+        "title": "The Power of Music: How R&B and Soul Can Transform Your Life",
+        "slug": "the-power-of-music-how-rb-and-soul-can-transform-your-life",
+        "image_url": "https://",
+        "category": "Entertainment News",
+        "author": {"id" : "55b375af99631aa6935535baadca5b9ab0af8570" },
+        "content": "Music has the power to transform lives, heal wounds, and uplift spirits. In a world filled with chaos and uncertainty, the soothing melodies of R&B and soul music offer a sanctuary of peace and tranquility. From the soulful crooning of Aretha Franklin to the smooth harmonies of Boyz II",
+        "featured": true,
+        "created_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)",
+        "updated_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)"
+      },
+      {
+        "id": "047bdf56cdfd729175edf6dd9b21abf3cf825cac",
+        "title": "The Power of Music: How R&B and Soul Can Transform Your Life",
+        "slug": "the-power-of-music-how-rb-and-soul-can-transform-your-life",
+        "image_url": "https://",
+        "category": "Entertainment News",
+        "author": {"id" : "55b375af99631aa6935535baadca5b9ab0af8570" },
+        "content": "Music has the power to transform lives, heal wounds, and uplift spirits. In a world filled with chaos and uncertainty, the soothing melodies of R&B and soul music offer a sanctuary of peace and tranquility. From the soulful crooning of Aretha Franklin to the smooth harmonies of Boyz II",
+        "featured": true,
+        "created_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)",
+        "updated_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)"
+      },    
+      {
+      "id": "047bdf56cdfd729175edf6dd9b21abf3cf825cac",
+      "title": "The Power of Music: How R&B and Soul Can Transform Your Life",
+      "slug": "the-power-of-music-how-rb-and-soul-can-transform-your-life",
+      "image_url": "https://",
+      "category": "Entertainment News",
+      "author": {"id" : "55b375af99631aa6935535baadca5b9ab0af8570" },
+      "content": "Music has the power to transform lives, heal wounds, and uplift spirits. In a world filled with chaos and uncertainty, the soothing melodies of R&B and soul music offer a sanctuary of peace and tranquility. From the soulful crooning of Aretha Franklin to the smooth harmonies of Boyz II",
+      "featured": true,
+      "created_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)",
+      "updated_at": "Wed Apr 03 2024 07:07:00 GMT-0400 (Eastern Daylight Time)"
+    }
+  ]
+}
